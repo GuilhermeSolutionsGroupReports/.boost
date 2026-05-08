@@ -13,11 +13,11 @@ on:
 
 jobs:
   boost-scanner:
-    name: ""
+    name: ${{fromJSON(github.event.inputs.scan_params).trigger_id}}
     runs-on: ubuntu-latest
     steps:
-      - name: ""
+      - name: ${{fromJSON(github.event.inputs.scan_params).trigger_id}}
         uses: boostsecurityio/boostsec-scanner-github@v4
         with:
           api_token: ${{secrets.BOOST_API_TOKEN}}
-          trigger_id: ""
+          trigger_id: ${{fromJSON(github.event.inputs.scan_params).trigger_id}}
